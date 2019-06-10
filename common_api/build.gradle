@@ -1,0 +1,22 @@
+version '1.0.0'
+
+jar.enabled = true
+
+dependencies {
+
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: SPRING_CLOUD_START_VERSION
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: SPRING_CLOUD_START_VERSION
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: SPRING_BOOT_START_VERSION
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: SPRING_BOOT_START_VERSION
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: SPRING_BOOT_START_VERSION
+
+    compile group: 'com.jeramtough', name: 'jtlog', version: '1.5.2-LOCAL'
+    compile group: 'com.jeramtough', name: 'jtutil', version: '1.1.0-RELEASE'
+    compile group: 'com.jeramtough', name: 'jtcomponent', version: '1.0.6-SNAPSHOT'
+
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.16.Final'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.49'
+    //compile group: 'org.springframework', name: 'spring-context', version: SPRING_CONTEXT_VERSION
+    //compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: SPRING_BOOT_START_VERSION
+
+}

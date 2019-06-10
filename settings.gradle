@@ -1,0 +1,9 @@
+rootProject.name = 'randl3-backend'
+include 'common_redis'
+include 'common_api'
+include 'eureka_service'
+include 'config_center'
+include 'image_captcha_api'
+include 'location_based_api'
+include 'send_verification_code_api'
+

@@ -1,0 +1,59 @@
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    repositories {
+        maven { url "E:\\Environment\\maven\\repository" }
+        maven { url "D:\\Developer\\Environment\\maven\\repository" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url 'https://repo.spring.io/libs-milestone' }
+        mavenCentral()
+        jcenter()
+        maven { url 'https://repo.spring.io/libs-snapshot' }
+        maven { url 'https://oss.sonatype.org/content/groups/public/' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+        testCompile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.11.0'
+        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: SPRING_BOOT_START_VERSION
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:' + SPRING_CLOUD_VERSION
+        }
+    }
+}
+
+configure(subprojects.findAll { it.name.contains('_api') && !it.name.contains('common') }) {
+    dependencies {
+        compile project(':common_api')
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:" + SPRING_BOOT_START_VERSION)
+    }
+}
+
